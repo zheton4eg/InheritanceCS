@@ -10,6 +10,8 @@ namespace InheritanceCS
 	{
 		static void Main(string[] args)
 		{
+			Human human = new Human("Montana", "Antonio", 25);
+			human.Print();
 		}
 	}
 }
