@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InheritanceCS
+namespace Academy
+
 {
 	internal class Human
 	{
@@ -24,10 +25,14 @@ namespace InheritanceCS
 		{
 			Console.WriteLine($"HumanDestructor:{GetHashCode()}");
 		}
-		public void Print()
+		public virtual void Print()
 		{
 			Console.WriteLine($"{LastName} {FirstName} {Age}");
 
+		}
+		public override string ToString()
+		{
+			return base.ToString()+$":\t{LastName} {FirstName} {Age}";
 		}
 	}
 }

@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace Academy
 {
-	internal class Student:Human
+	 class Student:Human
 	{
 		public string Speciality { get; set; }
 		public string Group { get; set; }
-		public string Rating { get; set; }
+		public double Rating { get; set; }
 		public double Attendance { get; set; }
-		public Student(string LastName, string FirstName, int age,
-			string speciality, string group, string rating, double attendance) : base(LastName, FirstName, age)
+		public Student
+			(string LastName, string FirstName, int age,
+			string speciality, string group, double rating, double attendance)
+			: base(LastName, FirstName, age)
 		{
 			Speciality = speciality;
 			Group = group;
@@ -21,5 +23,18 @@ namespace Academy
 			Attendance = attendance;
 			Console.WriteLine($"StudentConstructor:{GetHashCode()}");
 		}
+		~Student()
+		{
+			Console.WriteLine($"StudentDestructor:{GetHashCode()}");
+		}
+		public override void Print()
+		{
+			base.Print();
+			Console.WriteLine($"{Speciality} {Group} {Rating} {Attendance}");	
+		}
+		public override string ToString()
+		{
+			return base.ToString()+$" {Speciality} {Group} {Rating} {Attendance}";
+		}
 	}
-}
+} 
