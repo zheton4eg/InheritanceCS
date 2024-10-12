@@ -1,6 +1,8 @@
 ﻿//#define INHERITANCE_CHECK
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -36,10 +38,32 @@ namespace Academy
 				new Graduate("Evgene", "Krylov", 32, "C#", "PW319", 100, 100, "DrugDillerOnline")
 
 			};
-			for (int i = 0; i < group.Length;i++)
+
+			//Вывод на экран
+
+			/*for (int i = 0; i < group.Length;i++)
 			{
               Console.WriteLine(group[i]);				
+			}*/
+			//Запись в файл
+			StreamWriter groupwrite = File.AppendText("Group.txt");
+
+			for (int i = 0; i < group.Length; i++)
+			{
+				groupwrite.WriteLine(group[i]);
 			}
+			groupwrite.Close();
+			Process.Start("notepad", "Group.txt");
+
+			//Чтение из файла
+
+			StreamReader groupread = new StreamReader("Group.txt");
+			while (!groupread.EndOfStream)
+			{
+				string buffer = groupread.ReadLine();
+				Console.WriteLine(buffer);
+			}
+			groupread.Close();
 
 
 		}
