@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Academy
 {
-	 class Program
+	class Program
 	{
 		static void Main(string[] args)
 		{
+
 
 #if INHERITANCE_CHECK
 			Human human = new Human("Montana", "Antonio", 25);
@@ -29,43 +31,39 @@ namespace Academy
 			graduate.Print();
 			Console.WriteLine(graduate);
 #endif
-
 			Human[] group = new Human[]
 			{
-				new Human("Montana", "Antonio", 25),
+				new Human ("Montana", "Antonio", 25),
 				new Student("Pinkman", "Jessie", 22, "Chemistry", "WW_220", 95, 96),
+				new Student("Vercetty", "Tommy", 30, "Theft", "Vice", 97, 98),
 				new Teacher("White", "Walter", 50, "Chemistry", 25),
-				new Graduate("Evgene", "Krylov", 32, "C#", "PW319", 100, 100, "DrugDillerOnline")
+				new Graduate("Evgene", "Krylov", 32, "C#", "PW319", 100, 100, "DrugDillerOnline"),
+				new Graduate("Schreder", "Hank", 40, "Criminalistic", "Dea", 70, 40, "How to catch Heisenberg"),
+				new Teacher("Diaz", "Ricardo", 50, "Weapons distribution", 20),
 
 			};
-
-			//Вывод на экран
-
-			/*for (int i = 0; i < group.Length;i++)
-			{
-              Console.WriteLine(group[i]);				
-			}*/
-			//Запись в файл
-			StreamWriter groupwrite = File.AppendText("Group.txt");
-
+		}
+		static void Print(Human[] group)
+		{
 			for (int i = 0; i < group.Length; i++)
 			{
-				groupwrite.WriteLine(group[i]);
+				Console.WriteLine(group[i]);
+
 			}
-			groupwrite.Close();
-			Process.Start("notepad", "Group.txt");
+		}
+		static void Save(Human[] group,string filename)
+		{
 
-			//Чтение из файла
-
-			StreamReader groupread = new StreamReader("Group.txt");
-			while (!groupread.EndOfStream)
+			StreamReader groupread = new StreamReader(filename);
+		
+			for (int i = 0; i < group.Length; i++)
 			{
-				string buffer = groupread.ReadLine();
-				Console.WriteLine(buffer);
+				Console.WriteLine(group[i]);
+
 			}
 			groupread.Close();
-
-
+			Process.Start("notepad",filename);
 		}
+
 	}
 }
