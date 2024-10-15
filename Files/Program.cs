@@ -1,5 +1,6 @@
 ﻿#define WRITE_TO_FILE
 #define READ_FROM_FILE
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,6 @@ StreamReader sr =new StreamReader("File.txt");
 			}
 			sr.Close();
 #endif
-
 
 		}
 	}

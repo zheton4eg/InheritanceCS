@@ -24,12 +24,21 @@ namespace Academy
 		public override void Print()
 		{
 			base.Print();
-			Console.WriteLine($" {ThesisTopic}");
+			Console.WriteLine($"{ThesisTopic}");
 		}
 		public override string ToString()
 		{
-			return base.ToString()+$" {ThesisTopic}";
+			return base.ToString()+$"{ThesisTopic}";
 		}
-		
-	}
+        public override string ToFileString()
+        {
+            return base.ToFileString() + $",{ThesisTopic}";
+        }
+        public override Human Init(string[] values)
+        {
+			base.Init(values);
+            ThesisTopic = values[8];
+			return this;
+        }
+    }
 }
