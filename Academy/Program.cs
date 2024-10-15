@@ -42,28 +42,12 @@ namespace Academy
 				new Teacher("Diaz", "Ricardo", 50, "Weapons distribution", 20),
 
 			};
-		}
-		static void Print(Human[] group)
-		{
-			for (int i = 0; i < group.Length; i++)
-			{
-				Console.WriteLine(group[i]);
 
-			}
-		}
-		static void Save(Human[] group,string filename)
-		{
 
-			StreamReader groupread = new StreamReader(filename);
+			Streamer.Print(group);
+			Streamer.Save(group,"group.csv");
+
+		}
 		
-			for (int i = 0; i < group.Length; i++)
-			{
-				Console.WriteLine(group[i]);
-
-			}
-			groupread.Close();
-			Process.Start("notepad",filename);
-		}
-
 	}
 }
